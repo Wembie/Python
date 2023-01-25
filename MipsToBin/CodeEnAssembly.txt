@@ -1,0 +1,22 @@
+	lui $s0, 0x1000
+	ori $s0, $s0, 0x0000
+	lw $s3, 12($s0)
+	lw $s4, 16($s0)
+	lw $s5, 0($s0)
+ciclo:
+	beq $s3, $s4, salir
+	sub $s5, $s5, $s3
+	sw $s5, 0($s0)
+	add $v0, $0, $t1
+	addi $t5, $t8, 0x1400
+	andi $t5, $t8, 0x0013
+	j ciclo
+salir:
+	slt $0, $t1, $sp
+	slti $0, $t1, 0x15ab
+	jal ciclo
+	lw $s1, 4($s0)
+	lw $s2, 8($s0)
+	add $s5, $s1, $s2
+	bne $t1, $t2, ciclo
+	jr $ra
