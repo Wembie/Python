@@ -9,7 +9,7 @@ pip install pygame
 ```
 
 ## Funcionalidad
-En el juego, el jugador controla un personaje azul que puede moverse hacia la izquierda, derecha, arriba y abajo usando las teclas de flecha o las teclas WASD. Hay enemigos rojos que caen desde la parte superior de la pantalla y si el jugador choca con uno de ellos, el jugador pierde y el juego termina. También hay monedas amarillas que caen desde la parte superior de la pantalla y si el jugador las recoge, el puntaje del jugador aumenta. El juego continúa hasta que el jugador choca con un enemigo. Al final se mostrara la puntuación final alcanzada.
+En el juego, el jugador controla un personaje azul que puede moverse hacia la izquierda, derecha, arriba y abajo usando las teclas de flecha o las teclas W, A, S, D. Hay enemigos rojos que caen desde la parte superior de la pantalla y si el jugador choca con uno de ellos, el jugador pierde y el juego termina. También hay monedas amarillas que caen desde la parte superior de la pantalla y si el jugador las recoge, el puntaje del jugador aumenta. El juego continúa hasta que el jugador choca con un enemigo. Al final se mostrara la puntuación final alcanzada.
 
 ## Mejoras
 He realizado varias mejoras al juego original. En primer lugar, agregué un sistema de puntaje que cuenta la cantidad de monedas que el jugador ha recogido y muestra el puntaje en la pantalla. También agregué un efecto de sonido al recolectar una moneda y al chocar con un enemigo.
