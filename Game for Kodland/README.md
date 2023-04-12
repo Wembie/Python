@@ -33,4 +33,5 @@ Si deseas contribuir al proyecto, ¡serás bienvenido! Siéntete libre de enviar
 ## Autor
 Este proyecto fue creado por Juan Acosta / Wembie como una introducción a Pygame y al desarrollo de videojuegos en Python.
 
-PD: Es mi primer proyecto usando esta librería.
+### PD 
+Es mi primer proyecto usando esta librería.
