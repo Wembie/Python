@@ -89,7 +89,7 @@ class Game:
         self.player = Player()
         self.all_sprites.add( self.player )
 
-        for i in range(10):
+        for i in range( 10 ):
             enemy = Enemy()
             self.all_sprites.add( enemy )
             self.enemies.add( enemy )
