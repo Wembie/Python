@@ -31,6 +31,6 @@ python main.py
 Si deseas contribuir al proyecto, ¡serás bienvenido! Siéntete libre de enviar solicitudes de extracción para corregir errores o agregar nuevas funciones. Para cualquier pregunta o problema, no dudes en abrir un problema en el repositorio.
 
 ## Autor
-Este proyecto fue creado por Wembie como una introducción a Pygame y al desarrollo de videojuegos en Python.
+Este proyecto fue creado por Juan Acosta / Wembie como una introducción a Pygame y al desarrollo de videojuegos en Python.
 
 PD: Es mi primer proyecto usando esta librería.
