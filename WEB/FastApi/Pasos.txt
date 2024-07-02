@@ -1,0 +1,14 @@
+1. python -m venv (nombre)
+
+2.1 WINDOWS: (nombre)\Scripts\activate
+2.2 Unix/MacOS: source (nombre)/bin/activate  ---
+					    	|
+3. deactivate			  		v
+						4. pip install fastapi
+						5. pip install "unicorn[standard]"
+						6. Crear el main.py
+						7. Correrlo: uvicorn main:app --reload
+
+ 
+
+
