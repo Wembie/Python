@@ -1,0 +1,76 @@
+1. python -m venv venv
+
+2. .\venv\Scripts\activate
+
+3. pip install grpcio grpcio-tools
+
+4. Definir el archivo .proto | Creamos un archivo llamado greeter.proto que definirá nuestro servicio y los mensajes de solicitud y respuesta.
+
+5. Generar los archivos de Python a partir del .proto | Usamos grpcio-tools para generar el código de cliente y servidor a partir del archivo .proto:
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. greeter.proto
+Esto generará dos archivos: greeter_pb2.py (que contiene los mensajes) y greeter_pb2_grpc.py (que contiene el servicio).
+
+6. Implementar el servidor en Python | Creamos un servidor que implemente el servicio definido en nuestro archivo .proto.
+Definimos el servicio GreeterServicer que implementa el método SayHello. Este método toma una solicitud (HelloRequest) y devuelve una respuesta (HelloResponse).
+Usamos futures.ThreadPoolExecutor para manejar múltiples solicitudes de manera concurrente.
+El servidor escucha en el puerto 50051.
+
+7. Implementar el cliente en Python | Ahora, creamos un cliente que llame al servicio gRPC que hemos implementado.
+Creamos un canal inseguro con localhost:50051 (el puerto donde el servidor está escuchando).
+Usamos el stub GreeterStub para llamar al método SayHello y enviamos un mensaje HelloRequest con el nombre 'Juan'.
+Recibimos y mostramos la respuesta.
+
+8. Correrlo:
+
+python .\server.py | debe retornar: Servidor iniciado en el puerto 50051.
+y luego
+python .\client.py | debe retornar: Greeting: Hello, Juan!
+
+Teoria:
+
+gRPC (Google Remote Procedure Call) es un framework de comunicación RPC (Remote Procedure Call) desarrollado por Google, que permite que los servicios se comuniquen entre sí
+ de manera eficiente a través de la red. En lugar de enviar y recibir mensajes como en REST, gRPC permite que una aplicación llame a un método de otra aplicación en un servidor
+  remoto como si fuera un método local. Esto lo hace extremadamente útil para sistemas distribuidos o microservicios.
+
+Características principales de gRPC
+Comunicación eficiente: Utiliza HTTP/2, lo que permite la multiplexación (enviar varias solicitudes a la vez) y mejora el rendimiento respecto a HTTP/1.1.
+Serialización rápida: Utiliza Protocol Buffers (protobuf) para la serialización de los mensajes. Protobuf es un formato binario que es más rápido y más pequeño que JSON o XML.
+Multilenguaje: gRPC es compatible con muchos lenguajes de programación como Python, Go, Java, C++, entre otros.
+Soporte de streaming: gRPC soporta 4 tipos de comunicación:
+RPC simple (solicitud/respuesta única)
+Streaming del cliente
+Streaming del servidor
+Streaming bidireccional
+Conceptos básicos
+Protocol Buffers (protobuf): Son el lenguaje de definición de interfaz (IDL) que se utiliza para definir los contratos de los servicios gRPC. Los contratos especifican los 
+métodos disponibles en el servicio y los tipos de datos que estos métodos aceptan y devuelven.
+
+Ejemplo de un archivo .proto:
+
+syntax = "proto3";
+
+service Greeter {
+    rpc SayHello (HelloRequest) returns (HelloResponse);
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string message = 1;
+}
+
+En este archivo:
+
+Se define un servicio llamado Greeter con un método SayHello que acepta un HelloRequest y devuelve un HelloResponse.
+Se definen dos mensajes (HelloRequest y HelloResponse) que contienen los campos necesarios.
+Cliente y servidor: En gRPC, puedes tener un cliente que llama a los métodos remotos y un servidor que los expone. Ambos utilizan los contratos definidos en el archivo .proto.
+
+Tipos de comunicación en gRPC
+Además del RPC simple, gRPC soporta otros tipos de llamadas:
+    - Cliente streaming: El cliente envía una secuencia de mensajes, pero el servidor responde solo una vez.
+
+    - Servidor streaming: El cliente envía un mensaje, pero el servidor responde con una secuencia de mensajes.
+
+    - Streaming bidireccional: Tanto el cliente como el servidor pueden enviar una secuencia de mensajes entre ellos.
